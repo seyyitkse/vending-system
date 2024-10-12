@@ -1,0 +1,129 @@
+.container {
+    display: flex;
+  }
+  
+  /* Sidebar styles */
+  .sidebar {
+    width: 250px;
+    height: 100vh; /* Full height */
+    background-color: #343a40; /* Dark background color */
+    color: white; /* Text color */
+    padding: 20px 0;
+    position: fixed; /* Fixed position */
+    top: 0;
+    left: 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Sidebar shadow */
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    justify-content: space-between; /* Space between items */
+  }
+  
+  .sidebar-title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .user-info {
+    display: flex; /* Align user info in a row */
+    align-items: center; /* Vertically center items */
+    justify-content: flex-start; /* Align items to the left */
+    padding: 20px; /* Add padding for spacing */
+    position: relative; /* For dropdown positioning */
+    cursor: pointer; /* Change cursor to pointer for the entire user info section */
+  }
+  
+  .user-icon {
+    margin-right: 10px; /* Space between icon and details */
+    padding: 10px; /* Increase padding to enlarge hover area */
+    border-radius: 50%; /* Optional: make the hover area round */
+  }
+  
+  .user-details {
+    display: flex; /* Align name and role in a column */
+    flex-direction: column; /* Stack name and role vertically */
+    align-items: flex-start; /* Align items to the start (left) */
+  }
+  
+  .user-name {
+    font-weight: bold; /* Bold user name */
+    margin-bottom: 2px; /* Space below the name */
+  }
+  
+  .user-role {
+    font-size: 12px; /* Smaller font for role */
+    color: #b0b0b0; /* Lighter color for role */
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    flex-grow: 1; /* Take available space */
+  }
+  
+  .sidebar ul li {
+    padding: 15px 10px; /* Menu item padding */
+    color: #e9ecef; /* Light text color */
+    display: flex; /* Icons and text in a row */
+    align-items: center; /* Vertically center items */
+    transition: background-color 0.3s; /* Hover effect */
+  }
+  
+  .sidebar ul li:hover {
+    background-color: #495057; /* Hover color */
+  }
+  
+  .sidebar ul li a {
+    text-decoration: none;
+    color: inherit; /* Default color */
+    display: flex; /* Icons and text in a row */
+    align-items: center; /* Vertically center items */
+    gap: 10px; /* Space between icon and text */
+  }
+  
+  /* User menu styles */
+  .user-menu {
+    position: absolute; /* Dropdown menu positioning */
+    background-color: white;
+    color: black; /* Text color */
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    padding: 8px; /* Increased padding for size without enlarging text */
+    border-radius: 5px;
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center it perfectly */
+    top: -60px; /* Move the menu above the user name (adjust this value as needed) */
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Initially hidden */
+    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition */
+    z-index: 1000; /* Above other elements */
+    min-width: 150px; /* Set a minimum width for the menu */
+  }
+  
+  /* Show user menu on hover */
+  .user-info:hover .user-menu,
+  .user-menu:hover {
+    opacity: 1; /* Fully visible */
+    visibility: visible; /* Make it visible */
+  }
+  
+  /* Transition out */
+  .user-info:hover .user-menu {
+    transition-delay: 0s; /* No delay when showing */
+  }
+  
+  /* Transition in when hovering over user-menu */
+  .user-menu:hover {
+    transition-delay: 0s; /* No delay when hovering over the menu */
+  }
+  
+  .user-menu a {
+    display: block;
+    padding: 8px 10px;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .user-menu a:hover {
+    background-color: #f0f0f0; /* Hover effect for menu items */
+  }
+  
