@@ -16,7 +16,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: width 0.3s ease; /* Smooth transition */
+  transition: width 0.3s ease;
 }
 
 .sidebar.collapsed {
@@ -55,21 +55,37 @@
   color: #e9ecef;
   display: flex;
   align-items: center;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.sidebar ul li:hover {
-  background-color: #495057;
-}
-
+/* Ensure the full li item is clickable */
 .sidebar ul li a {
   text-decoration: none;
   color: inherit;
   display: flex;
   align-items: center;
   gap: 10px;
+  width: 100%;
 }
 
+/* Hover effect for the entire li */
+.sidebar ul li:hover {
+  background-color: #495057;
+}
+
+/* Active li styling */
+.sidebar ul li.active {
+  background-color: #495057; /* Change background color for active item */
+  color: #fff; /* Ensure text color for active item */
+  font-weight: bold; /* Optionally make the active item bold */
+}
+
+/* Add styles to keep the a tag inside the active li consistent */
+.sidebar ul li.active a {
+  color: #fff;
+}
+
+/* Handle collapsed state */
 .sidebar ul li span {
   display: inline-block;
   transition: opacity 0.3s;
@@ -80,6 +96,7 @@
   width: 0; /* Remove space when collapsed */
 }
 
+/* User info styles */
 .user-info {
   display: flex;
   align-items: center;
