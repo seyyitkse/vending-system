@@ -1,129 +1,146 @@
 .container {
-    display: flex;
-  }
-  
-  /* Sidebar styles */
-  .sidebar {
-    width: 250px;
-    height: 100vh; /* Full height */
-    background-color: #343a40; /* Dark background color */
-    color: white; /* Text color */
-    padding: 20px 0;
-    position: fixed; /* Fixed position */
-    top: 0;
-    left: 0;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5); /* Sidebar shadow */
-    display: flex;
-    flex-direction: column; /* Stack items vertically */
-    justify-content: space-between; /* Space between items */
-  }
-  
-  .sidebar-title {
-    text-align: center;
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .user-info {
-    display: flex; /* Align user info in a row */
-    align-items: center; /* Vertically center items */
-    justify-content: flex-start; /* Align items to the left */
-    padding: 20px; /* Add padding for spacing */
-    position: relative; /* For dropdown positioning */
-    cursor: pointer; /* Change cursor to pointer for the entire user info section */
-  }
-  
-  .user-icon {
-    margin-right: 10px; /* Space between icon and details */
-    padding: 10px; /* Increase padding to enlarge hover area */
-    border-radius: 50%; /* Optional: make the hover area round */
-  }
-  
-  .user-details {
-    display: flex; /* Align name and role in a column */
-    flex-direction: column; /* Stack name and role vertically */
-    align-items: flex-start; /* Align items to the start (left) */
-  }
-  
-  .user-name {
-    font-weight: bold; /* Bold user name */
-    margin-bottom: 2px; /* Space below the name */
-  }
-  
-  .user-role {
-    font-size: 12px; /* Smaller font for role */
-    color: #b0b0b0; /* Lighter color for role */
-  }
-  
-  .sidebar ul {
-    list-style-type: none;
-    padding: 0;
-    flex-grow: 1; /* Take available space */
-  }
-  
-  .sidebar ul li {
-    padding: 15px 10px; /* Menu item padding */
-    color: #e9ecef; /* Light text color */
-    display: flex; /* Icons and text in a row */
-    align-items: center; /* Vertically center items */
-    transition: background-color 0.3s; /* Hover effect */
-  }
-  
-  .sidebar ul li:hover {
-    background-color: #495057; /* Hover color */
-  }
-  
-  .sidebar ul li a {
-    text-decoration: none;
-    color: inherit; /* Default color */
-    display: flex; /* Icons and text in a row */
-    align-items: center; /* Vertically center items */
-    gap: 10px; /* Space between icon and text */
-  }
-  
-  /* User menu styles */
-  .user-menu {
-    position: absolute; /* Dropdown menu positioning */
-    background-color: white;
-    color: black; /* Text color */
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-    padding: 8px; /* Increased padding for size without enlarging text */
-    border-radius: 5px;
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Center it perfectly */
-    top: -60px; /* Move the menu above the user name (adjust this value as needed) */
-    opacity: 0; /* Initially hidden */
-    visibility: hidden; /* Initially hidden */
-    transition: opacity 0.3s ease, visibility 0.3s ease; /* Smooth transition */
-    z-index: 1000; /* Above other elements */
-    min-width: 150px; /* Set a minimum width for the menu */
-  }
-  
-  /* Show user menu on hover */
-  .user-info:hover .user-menu,
-  .user-menu:hover {
-    opacity: 1; /* Fully visible */
-    visibility: visible; /* Make it visible */
-  }
-  
-  /* Transition out */
-  .user-info:hover .user-menu {
-    transition-delay: 0s; /* No delay when showing */
-  }
-  
-  /* Transition in when hovering over user-menu */
-  .user-menu:hover {
-    transition-delay: 0s; /* No delay when hovering over the menu */
-  }
-  
-  .user-menu a {
-    display: block;
-    padding: 8px 10px;
-    text-decoration: none;
-    color: #333;
-  }
-  
-  .user-menu a:hover {
-    background-color: #f0f0f0; /* Hover effect for menu items */
-  }
-  
+  display: flex;
+}
+
+/* Sidebar styles */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background-color: #343a40;
+  color: white;
+  padding: 20px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: width 0.3s ease; /* Smooth transition */
+}
+
+.sidebar.collapsed {
+  width: 80px; /* Reduced width when collapsed */
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.sidebar-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  flex-grow: 1;
+}
+
+.sidebar ul li {
+  padding: 15px 10px;
+  color: #e9ecef;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.sidebar ul li:hover {
+  background-color: #495057;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sidebar ul li span {
+  display: inline-block;
+  transition: opacity 0.3s;
+}
+
+.sidebar.collapsed ul li span {
+  opacity: 0; /* Hide text when collapsed */
+  width: 0; /* Remove space when collapsed */
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.user-info:hover .user-menu,
+.user-menu:hover {
+  opacity: 1;
+  visibility: visible;
+}
+
+.user-icon {
+  margin-right: 10px;
+  padding: 10px;
+  border-radius: 50%;
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.user-name {
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.user-role {
+  font-size: 12px;
+  color: #b0b0b0;
+}
+
+.user-menu {
+  position: absolute;
+  background-color: white;
+  color: black;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  padding: 8px;
+  border-radius: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: -60px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+  min-width: 150px;
+}
+
+.user-menu a {
+  display: block;
+  padding: 8px 10px;
+  text-decoration: none;
+  color: #333;
+}
+
+.user-menu a:hover {
+  background-color: #f0f0f0;
+}
