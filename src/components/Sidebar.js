@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom'; // Import useLocation to track current route
 import { GiVendingMachine } from "react-icons/gi";
-import { FaHome, FaBox, FaChartBar, FaClipboardList, FaUser, FaCogs, FaUsers } from 'react-icons/fa';
+import { FaHome, FaBox, FaChartBar, FaClipboardList, FaUser, FaCogs ,FaUsers } from 'react-icons/fa';
+// import { SiAwselasticloadbalancing } from "react-icons/si";
+import { GiSecretBook } from "react-icons/gi";
 
 import './Sidebar.css'; // CSS file
 
@@ -35,7 +37,10 @@ function Sidebar() {
           <Link to="/vending-machine-registration"><GiVendingMachine /> Otomat Kayıt</Link>
         </li>
         <li className={isActive('/staff-management') ? 'active' : ''}>
-          <Link to="/staff-management"><FaUsers /> Staff Management</Link>
+          <Link to="/staff-management"><FaUsers /> Çalışan Yönetimi</Link>
+        </li>
+        <li className={isActive('/log-records') ? 'active' : ''}>
+          <Link to="/log-records"><GiSecretBook /> Log Kayıtları</Link>
         </li>
       </ul>
       <div 
