@@ -1,0 +1,203 @@
+.dashboard-container {
+  padding: 30px;
+  background-color: #eef2f7; /* Light gray background */
+  min-height: 100vh; /* Full height */
+  font-family: 'Arial', sans-serif; /* More modern font */
+}
+
+h1 {
+  color: #2c3e50; /* Darker blue-gray text */
+  text-align: center; /* Center the heading */
+  margin-bottom: 30px; /* Space below the heading */
+  font-size: 32px; /* Larger heading size */
+}
+
+.cards-container {
+  display: grid; /* Grid layout */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive columns */
+  gap: 25px; /* Spacing between cards */
+  margin-top: 20px; /* Top margin for the grid */
+}
+
+.card {
+  background-color: #ffffff; /* White card background */
+  border-radius: 12px; /* More rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Stronger shadow effect */
+  padding: 25px; /* More padding inside the card */
+  text-align: center; /* Center text and icons */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2); /* Deeper shadow on hover */
+}
+
+.card h2 {
+  font-size: 24px; /* Larger heading inside cards */
+  margin-bottom: 15px; /* Space below the heading */
+  color: #34495e; /* Darker blue-gray for the headings */
+}
+
+.card p {
+  font-size: 16px; /* Slightly larger text */
+  color: #000000; /* Black text */
+  margin-bottom: 10px; /* Space between paragraphs */
+}
+
+.card ul {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove padding */
+}
+
+.card ul li {
+  font-size: 14px;
+  color: #555; /* Gray color for history items */
+  text-align: left; /* Align history text to the left */
+  margin-bottom: 5px; /* Space between history items */
+}
+
+/* Weather and Clock Card Styles */
+.weather-clock-card {
+  grid-column: span 2; /* Makes the card wider */
+  background-color: #e67e22; /* Orange background */
+  color: white; /* White text */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack child elements vertically */
+  align-items: center; /* Center items horizontally */
+  padding: 20px; /* Add padding inside the card */
+}
+
+.info-container {
+  display: flex; /* Enables side-by-side layout */
+  justify-content: space-between; /* Adjust spacing between items */
+  align-items: center; /* Aligns items vertically in the center */
+  width: 100%; /* Full width of the card */
+}
+
+.weather-info {
+  margin-bottom: 20px; /* Space between weather info and clock */
+  text-align: center; /* Center text */
+}
+
+.clock-info {
+  text-align: center; /* Center clock text */
+}
+
+/* Individual Card Styles */
+.date-card {
+  background-color: #8e44ad; /* Purple background for date card */
+  color: white; /* White text */
+}
+
+.stats-card {
+  background-color: #2ecc71; /* Green background for statistics card */
+  color: white; /* White text for contrast */
+}
+
+.notes-card {
+  grid-column: span 2; /* Make the weather card wider */
+  padding: 20px;
+}
+
+.notes-card input {
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: auto; /* Ensure no fixed width from other styles */
+}
+
+.notes-card button {
+  padding: 10px;
+}
+
+.notes-card ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.notes-card li {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.notes-card li button {
+  margin-left: auto;
+  background: red;
+  color: white;
+}
+
+.history-card {
+  background-color: #95a5a6; /* Gray background for the history card */
+  color: white; /* White text */
+}
+
+.income-card {
+  background-color: #e74c3c; /* Red background */
+  color: white; /* White text */
+}
+
+.best-sellers-card {
+  background-color: #f39c12; /* Orange background */
+  color: white; /* White text */
+}
+
+.stock-status-card {
+  background-color: #27ae60; /* Green background */
+  color: white; /* White text */
+}
+
+.calendar-card {
+  background-color: #8e44ad; /* Purple background */
+  color: white; /* White text */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .cards-container {
+    grid-template-columns: 1fr; /* Single column layout on small screens */
+  }
+
+  .card {
+    margin-bottom: 20px; /* Space between cards on small screens */
+  }
+}
+
+/* Todo List Styles */
+.todo-list {
+  list-style: none;
+}
+
+.todo-item {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+}
+
+.todo-checkbox {
+  margin-right: 10px; /* Ensure checkbox is fixed to the left */
+  margin-left: 0;
+  flex-shrink: 0; /* Prevent checkbox from shrinking */
+}
+
+.todo-text {
+  flex-grow: 1; /* Allow the text to take up available space */
+  margin-left: 10px;
+}
+
+.todo-text.completed {
+  text-decoration: line-through; /* Strikethrough for completed tasks */
+}
+
+.delete-btn {
+  background-color: #ff6347;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #ff4500; /* Darker red on hover */
+}
