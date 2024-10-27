@@ -13,24 +13,26 @@ const LogRecords = () => {
   const logLevels = ['LOGIN','LOGOUT','FAIL','INF', 'REGISTER','TOKEN','ERR']; // Example log levels
 
   // Function to fetch logs from the API
-  const fetchLogs = () => {
-    fetch('https://localhost:44395/api/Logs/get-logs')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error('Loglar getirilirken hata oluştu. Sayfayı yenileyiniz ya da yönetici ile iletişime geçiniz.');
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setLogs(data);
-        setFilteredLogs(data); // Initially show all logs
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error.message);
-        setLoading(false);
-      });
-  };
+// Function to fetch logs from the API
+const fetchLogs = () => {
+  fetch('https://localhost:44395/api/Logs/get-logs')
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Loglar getirilirken hata oluştu. Sayfayı yenileyiniz ya da yönetici ile iletişime geçiniz.');
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const sortedLogs = data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)); // Sort by timestamp descending
+      setLogs(sortedLogs);
+      setFilteredLogs(sortedLogs); // Initially show all logs in sorted order
+      setLoading(false);
+    })
+    .catch((error) => {
+      setError(error.message);
+      setLoading(false);
+    });
+};
 
   // useEffect to fetch logs initially and refresh every 15 seconds
   useEffect(() => {
