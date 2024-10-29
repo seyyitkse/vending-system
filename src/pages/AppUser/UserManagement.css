@@ -1,0 +1,87 @@
+.staff-management-container {
+    padding: 20px;
+    background-color: #eef2f7;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-container {
+    margin: 20px 0;
+    display: flex;
+    justify-content: flex-start; /* Aligns the search box to the left */
+}
+
+.search-box {
+    padding: 10px; /* Adjust padding as needed */
+    border: 1px solid #ccc; /* Border styling */
+    border-radius: 5px; /* Rounded corners */
+    outline: none; /* Remove outline on focus */
+    transition: border-color 0.3s; /* Transition for border color */
+    width: 300px; /* Set a specific width for the input */
+}
+
+.search-box:focus {
+    border-color: #007bff; /* Change border color on focus */
+}
+.staff-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.staff-table th,
+.staff-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.staff-table th {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn {
+    margin: 0 5px;
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none; /* Linklerin altını kaldır */
+    display: inline-block; /* Butonların hizalanması için */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Hover ve aktif animasyonlar */
+}
+
+.btn i {
+    margin-right: 5px; /* Simgelerin yanında boşluk bırak */
+}
+
+.btn-edit {
+    background-color: #e67e22;
+}
+
+
+
+/* Hover efektleri */
+.btn:hover {
+    transform: scale(1.05); /* Butonu büyüt */
+}
+
+.btn-edit:hover {
+    background-color: #d35400; /* Düzenleme butonuna hover rengi */
+}
+
+.button-group {
+    display: flex;
+    justify-content: center;
+}
+
+.button-group .btn {
+    margin-left: 5px; /* Butonlar arasına boşluk bırak */
+}
