@@ -1,0 +1,90 @@
+.new-vending-machine-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f7f7f7; /* Light background */
+  min-height: 100vh; /* Full height */
+}
+
+.registration-card {
+  display: block; /* Ensures block layout */
+  background-color: white; /* Card background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  width: 100%;
+  max-width: 700px; /* Maximum width increased */
+}
+form {
+  display: block; /* Ensures the form layout is block, not flex */
+}
+h1 {
+  font-size: 28px;
+  color: #343a40; /* Dark text color */
+  margin-bottom: 20px; /* Spacing below title */
+}
+
+.form-group {
+  margin-bottom: 15px; /* Space between fields */
+  display: block; /* Ensures block layout */
+
+}
+
+label {
+  margin-bottom: 5px;
+  font-weight: bold; /* Bold labels */
+}
+
+input[type='text'] {
+  width: 100%; /* Full width */
+  padding: 10px;
+  border: 1px solid #ced4da; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 14px; /* Adjusted font size */
+}
+
+.map-container {
+  margin: 20px 0; /* Space around the map */
+  border-radius: 5px; /* Rounded corners */
+  overflow: hidden; /* Prevent overflow */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Slight shadow around the map */
+}
+
+.coordinates-display {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #e9ecef; /* Light gray background for display area */
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.submit-button {
+  background-color: #28a745; /* Bootstrap success color */
+  color: white; /* White text */
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.submit-button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+.clear-button {
+  background-color: #dc3545; /* Bootstrap danger color */
+  color: white; /* White text */
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 10px; /* Space between buttons */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.clear-button:hover {
+  background-color: #c82333; /* Darker red on hover */
+}
