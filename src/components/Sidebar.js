@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { GiVendingMachine } from "react-icons/gi";
-import { FaHome, FaBox, FaChartBar, FaClipboardList, FaUser, FaCogs, FaUsers } from 'react-icons/fa';
-import { GiSecretBook } from "react-icons/gi";
+import { GiVendingMachine,GiSecretBook } from "react-icons/gi";
+import { FaHome, FaBox, FaChartBar, FaClipboardList, FaUser, FaCogs, FaUsers,FaUserCog   } from 'react-icons/fa';
 import { PiTreeStructureDuotone } from "react-icons/pi";
 import { TbUsersGroup } from "react-icons/tb";
+import { RiCustomerService2Line } from "react-icons/ri";
+import { FiUsers } from "react-icons/fi";
+import { FaUserGear } from "react-icons/fa6";
+
 import './Sidebar.css';
 
 function Sidebar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isRoleOpen, setIsRoleOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
   const location = useLocation();
 
@@ -47,19 +51,53 @@ function Sidebar() {
         <li onClick={() => setIsRoleOpen(!isRoleOpen)} className="accordion-header">
           <div className="accordion-toggle">
             <TbUsersGroup />
-            <span>Roller</span>
+            <span className={isRoleOpen ? 'bold' : ''}>Rol Yönetimi</span>
           </div>
           <span className={isRoleOpen ? 'arrow open' : 'arrow'}>&#9660;</span>
         </li>
         <ul className={`accordion-content ${isRoleOpen ? 'open' : ''}`}>
         <li className={isActive('/roles') ? 'active' : ''}>
-        <Link to="/roles"><TbUsersGroup /> Roller</Link>
+        <Link to="/roles"><FaUserCog /> Roller</Link>
         </li>
         <li className={isActive('/user-management') ? 'active' : ''}>
           <Link to="/user-management"><FaUsers /> Kullanıcı Rolleri</Link>
         </li>
         </ul>
+
+        <li onClick={() => setIsUserMenuOpen(!isUserMenuOpen)} className="accordion-header">
+          <div className="accordion-toggle">
+            <FaUserGear />
+            <span className={isUserMenuOpen ? 'bold' : ''}>Kullanıcı Yönetimi</span>
+          </div>
+          <span className={isUserMenuOpen ? 'arrow open' : 'arrow'}>&#9660;</span>
+        </li>
+        <ul className={`accordion-content ${isUserMenuOpen ? 'open' : ''}`}>
+        <li className={isActive('/customer-management') ? 'active' : ''}>
+        <Link to="/customer-management"><FiUsers /> Müşteriler</Link>
+        </li>
+        <li className={isActive('/user-management') ? 'active' : ''}>
+          <Link to="/user-management"><RiCustomerService2Line /> Adminler</Link>
+        </li>
+        </ul>
+        
+        <li onClick={() => setIsUserMenuOpen(!isUserMenuOpen)} className="accordion-header">
+          <div className="accordion-toggle">
+            <FaUserGear />
+            <span className={isUserMenuOpen ? 'bold' : ''}>Kullanıcı Yönetimi</span>
+          </div>
+          <span className={isUserMenuOpen ? 'arrow open' : 'arrow'}>&#9660;</span>
+        </li>
+        <ul className={`accordion-content ${isUserMenuOpen ? 'open' : ''}`}>
+        <li className={isActive('/customer-management') ? 'active' : ''}>
+        <Link to="/customer-management"><FiUsers /> Müşteriler</Link>
+        </li>
+        <li className={isActive('/user-management') ? 'active' : ''}>
+          <Link to="/user-management"><RiCustomerService2Line /> Adminler</Link>
+        </li>
+        </ul>
       </ul>
+
+
       <div 
         className="user-info"
         onMouseEnter={() => setIsMenuOpen(true)} 

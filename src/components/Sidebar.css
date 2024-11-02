@@ -61,7 +61,9 @@
   color: #fff;
   font-weight: bold;
 }
-
+.bold {
+  font-weight: bold;
+}
 .sidebar ul li.active a {
   color: #fff;
 }
