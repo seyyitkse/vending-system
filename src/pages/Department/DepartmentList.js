@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import DataTable from 'react-data-table-component';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify'; // Import toastify
+import 'react-toastify/dist/ReactToastify.css'; // Import toast styles
 import './StaffManagement.css'; // Paylaşılan CSS dosyası
 
 const DepartmentList = () => {
@@ -22,8 +24,10 @@ const DepartmentList = () => {
         const data = await response.json();
         setDepartments(data);
         setFilteredDepartments(data);
+        // toast.success('Departments loaded successfully!'); // Success message for loading
       } catch (error) {
-        setError('Failed to load departments.');
+        setError('Departmanlar yüklenirken hata oluştu.');
+        toast.error('Departmanlar yüklenirken hata oluştu.'); // Error message for loading
       } finally {
         setLoading(false);
       }
@@ -45,9 +49,11 @@ const DepartmentList = () => {
     if (response.ok) {
       setDepartments(departments.filter((dept) => dept.departmentID !== departmentIdToDelete));
       setFilteredDepartments(filteredDepartments.filter((dept) => dept.departmentID !== departmentIdToDelete));
+      toast.success('Departman başarıyla silindi.'); // Success message for deletion
       setModalOpen(false);
     } else {
-      setError('Failed to delete the department');
+      setError('Departman silinirken hata oluştu.');
+      toast.error('Departman silinirken hata oluştu.'); // Error message for deletion
       setModalOpen(false);
     }
   };
@@ -116,13 +122,17 @@ const DepartmentList = () => {
       </div>
 
       {isModalOpen && (
-        <div className="modal">
-          <h2>Silme Onayı</h2>
-          <p>Bu departmanı gerçekten silmek istiyor musunuz?</p>
-          <button onClick={confirmDelete} className="btn btn-confirm">Evet</button>
-          <button onClick={() => setModalOpen(false)} className="btn btn-cancel">Hayır</button>
-        </div>
-      )}
+  <div className="modal">
+    <div className="modal-content"> {/* Wrap the content in this div */}
+      <h2>Silme Onayı</h2>
+      <p>Bu departmanı gerçekten silmek istiyor musunuz?</p>
+      <button onClick={confirmDelete} className="btn btn-confirm">Evet</button>
+      <button onClick={() => setModalOpen(false)} className="btn btn-cancel">Hayır</button>
+    </div>
+  </div>
+)}
+      {/* ToastContainer to show notifications */}
+      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} />
     </div>
   );
 };
