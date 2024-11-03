@@ -12,7 +12,6 @@ const CustomerUserListPage = () => {
   const [users, setUsers] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [filteredUsers, setFilteredUsers] = useState([]);
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [isModalOpen, setModalOpen] = useState(false);
   const [userIdToDelete, setUserIdToDelete] = useState(null);
@@ -30,12 +29,8 @@ const CustomerUserListPage = () => {
       }));
       setUsers(usersWithRoles);
       setFilteredUsers(usersWithRoles);
-      toast.success('Users loaded successfully!');
     } catch (error) {
-      setError('Error fetching customer users.');
-      toast.error('Error fetching customer users.');
-    } finally {
-      setLoading(false);
+      console.error('Error fetching customer users:', error);
     }
   };
 
@@ -72,7 +67,7 @@ const CustomerUserListPage = () => {
   const columns = [
     { name: 'Name', selector: (row) => row.displayName, sortable: true },
     { name: 'Email', selector: (row) => row.email, sortable: true },
-    { name: 'Phone', selector: (row) => row.phone, sortable: true },
+    { name: 'Department', selector: (row) => row.departmentName, sortable: true },
     {
       name: 'İşlemler',
       cell: (row) => (
@@ -88,7 +83,6 @@ const CustomerUserListPage = () => {
     },
   ];
 
-  if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
   return (
@@ -111,9 +105,6 @@ const CustomerUserListPage = () => {
         pagination
         highlightOnHover
         responsive
-        striped
-        subHeader
-        noDataComponent="No users found"
       />
         <div className="button-container">
           <Link to="/users/add" className="btn btn-add-user">

@@ -52,7 +52,7 @@ const AdminUserListPage = () => {
   const columns = [
     { name: 'Name', selector: (row) => row.displayName, sortable: true },
     { name: 'Email', selector: (row) => row.email, sortable: true },
-    { name: 'Phone', selector: (row) => row.phone, sortable: true },
+    { name: 'Department', selector: (row) => row.departmentName, sortable: true },
     {
       name: 'İşlemler',
       cell: (row) => (
@@ -70,16 +70,16 @@ const AdminUserListPage = () => {
 
   return (
     <div className="user-list-page">
-      <h2 className='DataTable__header'>Admin Kullanıcı Listesi</h2>
-
-
-      <input
-        type="text"
-        placeholder="İsim ya da mail ile kullanıcı ara..."
-        value={searchText}
-        onChange={handleSearch}
-        className="search-bar"
-      />
+      <div className="header-container">
+        <h2 className='DataTable__header'>Admin Kullanıcı Listesi</h2>
+        <input
+          type="text"
+          placeholder="İsim ya da mail ile kullanıcı ara..."
+          value={searchText}
+          onChange={handleSearch}
+          className="search-bar"
+        />
+      </div>
 
       <DataTable
         columns={columns}
@@ -88,7 +88,7 @@ const AdminUserListPage = () => {
         highlightOnHover
         responsive
       />
-      
+
       <div className="button-container">
         <Link to="/users/add" className="btn btn-add-user">
           <FontAwesomeIcon icon={faPlus} /> Admin Ekle
