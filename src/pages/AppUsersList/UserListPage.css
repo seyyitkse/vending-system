@@ -1,0 +1,82 @@
+/* Basic container styling */
+.user-list-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Button container styling */
+
+/* Search bar styling */
+.search-bar {
+    padding: 10px;
+    width: 100%;
+    max-width: 300px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    display: block;
+    margin: 0 auto 15px auto;
+    transition: border-color 0.3s, background-color 0.3s;
+  }
+  
+  .search-bar:hover {
+    border-color: #007bff;
+    background-color: #f1f1f1;
+  }
+  .button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Add some space between the buttons */
+    margin-bottom: 20px; /* Add some space below the button container */
+  }
+  
+  .button-container .btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Space between icon and text */
+  }
+  
+  .button-container .btn-refresh {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .button-container .btn-refresh:hover {
+    background-color: #0056b3;
+  }
+  
+  .button-container .btn-add-user {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .button-container .btn-add-user:hover {
+    background-color: #218838;
+  }
+/* Data table styling */
+.DataTable__header{
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+.DataTable__rows {
+    background-color: #f9f9f9;
+}
+
+.DataTable__table {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.DataTable__rows:hover {
+    background-color: #f1f1f1;
+}
