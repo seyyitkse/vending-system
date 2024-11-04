@@ -72,7 +72,7 @@ const CustomerUserListPage = () => {
       name: 'İşlemler',
       cell: (row) => (
         <div className="button-group">
-          <Link to={`/users/edit/${row.id}`} className="btn btn-edit">
+          <Link to={`/user/update/${row.id}`} className="btn btn-edit">
             <i className="fas fa-edit"></i> Düzenle
           </Link>
           <button onClick={() => handleDelete(row.id)} className="btn btn-delete">
@@ -107,7 +107,7 @@ const CustomerUserListPage = () => {
         responsive
       />
         <div className="button-container">
-          <Link to="/users/add" className="btn btn-add-user">
+          <Link to="/register-user" className="btn btn-add-user">
             <FontAwesomeIcon icon={faPlus} /> Kullanıcı Ekle
           </Link>
           <button onClick={fetchCustomerUsers} className="btn btn-refresh">
