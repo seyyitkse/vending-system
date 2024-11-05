@@ -104,10 +104,11 @@ const CustomerUserListPage = () => {
         pagination
         highlightOnHover
         responsive
+        noDataComponent={<p>Gösterilecek log kaydı yok!</p>} // Show a message if no data is available
       />
         <div className="button-container">
           <Link to="/register-customer" className="btn btn-add-user">
-            <FontAwesomeIcon icon={faPlus} /> Kullanıcı Ekle
+            <FontAwesomeIcon icon={faPlus} /> Müşteri Ekle
           </Link>
           <button onClick={fetchCustomerUsers} className="btn btn-refresh">
             <FontAwesomeIcon icon={faSyncAlt} /> Sayfayı Yenile

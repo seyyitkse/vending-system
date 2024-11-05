@@ -95,6 +95,7 @@ const AdminUserListPage = () => {
         pagination
         highlightOnHover
         responsive
+        noDataComponent={<p>Gösterilecek log kaydı yok!</p>} // Show a message if no data is available
       />
 
       <div className="button-container">
