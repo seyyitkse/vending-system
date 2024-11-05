@@ -65,9 +65,8 @@ const CustomerUserListPage = () => {
   };
 
   const columns = [
-    { name: 'Name', selector: (row) => row.displayName, sortable: true },
-    { name: 'Email', selector: (row) => row.email, sortable: true },
-    { name: 'Department', selector: (row) => row.departmentName, sortable: true },
+    { name: 'Kullanıcı İsmi', selector: (row) => row.displayName, sortable: true },
+    { name: 'Mail Adresi', selector: (row) => row.email, sortable: true },
     {
       name: 'İşlemler',
       cell: (row) => (
@@ -107,7 +106,7 @@ const CustomerUserListPage = () => {
         responsive
       />
         <div className="button-container">
-          <Link to="/register-user" className="btn btn-add-user">
+          <Link to="/register-customer" className="btn btn-add-user">
             <FontAwesomeIcon icon={faPlus} /> Kullanıcı Ekle
           </Link>
           <button onClick={fetchCustomerUsers} className="btn btn-refresh">

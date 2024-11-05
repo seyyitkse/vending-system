@@ -4,6 +4,7 @@
     margin: 0 auto;
     padding: 20px;
     font-family: Arial, sans-serif;
+    background-color: #eef2f7;
 }
 
 /* Button container styling */
@@ -30,7 +31,7 @@
     display: flex;
     justify-content: center;
     gap: 10px; /* Add some space between the buttons */
-    margin-bottom: 20px; /* Add some space below the button container */
+    margin-top: 20px; /* Add some space below the button container */
   }
   
   .button-container .btn {
