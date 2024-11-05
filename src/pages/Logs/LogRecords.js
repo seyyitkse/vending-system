@@ -6,33 +6,30 @@ import './LogRecords.css';
 const LogRecords = () => {
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState(''); // State for search input
   const [filteredLogs, setFilteredLogs] = useState([]); // Filtered logs based on search
   const [selectedLevel, setSelectedLevel] = useState(''); // State for selected log level
-  const logLevels = ['LOGIN','LOGOUT','FAIL','INF', 'REGISTER','TOKEN','ERR']; // Example log levels
+  const logLevels = ['LOGIN', 'LOGOUT', 'FAIL', 'INF', 'REGISTER', 'TOKEN', 'ERR']; // Example log levels
 
   // Function to fetch logs from the API
-// Function to fetch logs from the API
-const fetchLogs = () => {
-  fetch('https://localhost:44395/api/Logs/get-logs')
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error('Loglar getirilirken hata oluştu. Sayfayı yenileyiniz ya da yönetici ile iletişime geçiniz.');
-      }
-      return response.json();
-    })
-    .then((data) => {
-      const sortedLogs = data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)); // Sort by timestamp descending
-      setLogs(sortedLogs);
-      setFilteredLogs(sortedLogs); // Initially show all logs in sorted order
-      setLoading(false);
-    })
-    .catch((error) => {
-      setError(error.message);
-      setLoading(false);
-    });
-};
+  const fetchLogs = () => {
+    fetch('https://localhost:44395/api/Logs/get-logs')
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Log kayıtları yüklenirken bir hata oluştu!');
+        }
+        return response.json();
+      })
+      .then((data) => {
+        const sortedLogs = data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)); // Sort by timestamp descending
+        setLogs(sortedLogs);
+        setFilteredLogs(sortedLogs); // Initially show all logs in sorted order
+        setLoading(false);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
+  };
 
   // useEffect to fetch logs initially and refresh every 15 seconds
   useEffect(() => {
@@ -83,14 +80,6 @@ const fetchLogs = () => {
     },
   ];
 
-  if (loading) {
-    return <p>Loglar Yükleniyor...</p>;
-  }
-
-  if (error) {
-    return <p>Hata: {error}</p>;
-  }
-
   return (
     <div className="log-records-page">
       <h1>Log Kayıtları</h1>
@@ -122,7 +111,7 @@ const fetchLogs = () => {
         progressPending={loading} // Show loading indicator while loading
         paginationPerPage={10} // Set default rows per page
         paginationRowsPerPageOptions={[10, 25, 50]} // Rows per page options
-        noDataComponent={<p>Log kaydı bulunamadı.</p>} // Show a message if no data is available
+        noDataComponent={<p>Gösterilecek log kaydı yok!</p>} // Show a message if no data is available
       />
     </div>
   );
