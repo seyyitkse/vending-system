@@ -1,0 +1,88 @@
+.vending-machines-page {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  overflow: hidden; /* Prevents scrolling */
+}
+
+.search-input {
+  margin-bottom: 15px;
+  padding: 8px;
+  width: 100%;
+  font-size: 14px;
+}
+
+.vending-machines-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+  gap: 15px;
+}
+
+.vending-machine-card {
+  border: 1px solid #ddd;
+  padding: 30px; /* Reduced padding for smaller cards */
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-size: 14px; /* Smaller font size */
+  max-height: 350px; /* Set a max height to control size */
+}
+
+.machine-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.machine-stats p {
+  margin: 4px 0;
+  font-size: 13px; /* Smaller font for stats */
+}
+
+.map-container {
+  margin: 8px 0;
+  height: 100px; /* Reduced map height */
+}
+
+.machine-location {
+  margin: 5px 0;
+  font-size: 12px; /* Smaller font for location */
+  color: #666;
+}
+
+.details-button {
+  display: inline-block;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.pagination button {
+  padding: 6px 12px;
+  margin: 0 4px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.pagination span {
+  margin: 0 10px;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
