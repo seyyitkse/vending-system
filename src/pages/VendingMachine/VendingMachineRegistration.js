@@ -40,7 +40,7 @@ const VendingMachineRegistration = () => {
   return (
     <div className="new-vending-machine-page">
       <h1>Yeni Otomat Kayıt Sayfası</h1>
-      <div className="registration-card">
+      <div className="registration-card1">
         <form onSubmit={handleSubmit} style={{ display: 'block' }}>
           <div className="form-group">
             <label htmlFor="machineName">Otomat Adı:</label>
@@ -54,7 +54,7 @@ const VendingMachineRegistration = () => {
           </div>
           <div>
             <h2>Otomatın Konumunu Haritadan Seçiniz</h2>
-            <div className="map-container">
+            <div className="map-container1">
               <MapContainer
                 center={position}
                 zoom={13}

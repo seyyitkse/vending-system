@@ -7,7 +7,7 @@
   min-height: 100vh; /* Full height */
 }
 
-.registration-card {
+.registration-card1 {
   display: block; /* Ensures block layout */
   background-color: white; /* Card background */
   padding: 20px;
@@ -25,13 +25,13 @@ h1 {
   margin-bottom: 20px; /* Spacing below title */
 }
 
-.form-group {
+.form-group1 {
   margin-bottom: 15px; /* Space between fields */
   display: block; /* Ensures block layout */
 
 }
 
-label {
+label1 {
   margin-bottom: 5px;
   font-weight: bold; /* Bold labels */
 }
@@ -44,14 +44,14 @@ input[type='text'] {
   font-size: 14px; /* Adjusted font size */
 }
 
-.map-container {
+.map-container1 {
   margin: 20px 0; /* Space around the map */
   border-radius: 5px; /* Rounded corners */
   overflow: hidden; /* Prevent overflow */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Slight shadow around the map */
 }
 
-.coordinates-display {
+.coordinates-display1 {
   margin-top: 20px;
   padding: 10px;
   background-color: #e9ecef; /* Light gray background for display area */
@@ -59,7 +59,7 @@ input[type='text'] {
   font-size: 16px;
 }
 
-.submit-button {
+.submit-button1 {
   background-color: #28a745; /* Bootstrap success color */
   color: white; /* White text */
   border: none;
