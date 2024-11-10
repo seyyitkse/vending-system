@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import DataTable from 'react-data-table-component';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
-import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './UserListPage.css';
 
 const AdminUserListPage = () => {
   const [users, setUsers] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [filteredUsers, setFilteredUsers] = useState([]);
-  const [error, setError] = useState('');
   const [isModalOpen, setModalOpen] = useState(false);
   const [userIdToDelete, setUserIdToDelete] = useState(null);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     fetchAdminUsers();
@@ -24,16 +26,17 @@ const AdminUserListPage = () => {
       setUsers(response.data);
       setFilteredUsers(response.data);
     } catch (error) {
-      setError('Admin kullanıcıları yüklenirken bir hata oluştu: ' + error.message);
+      console.error('Error fetching admin users:', error);
     }
   };
 
   const handleSearch = (event) => {
-    const value = event.target.value.toLowerCase();
-    setSearchText(value);
-    const filtered = users.filter(user =>
-      user.fullName.toLowerCase().includes(value) ||
-      user.email.toLowerCase().includes(value)
+    const text = event.target.value;
+    setSearchText(text);
+
+    const filtered = users.filter((user) =>
+      user.fullName.toLowerCase().includes(text.toLowerCase()) ||
+      user.email.toLowerCase().includes(text.toLowerCase())
     );
     setFilteredUsers(filtered);
   };
@@ -48,17 +51,19 @@ const AdminUserListPage = () => {
       await axios.delete(`https://localhost:44395/api/AppUser/${userIdToDelete}`);
       setUsers(users.filter(user => user.id !== userIdToDelete));
       setFilteredUsers(filteredUsers.filter(user => user.id !== userIdToDelete));
-      setModalOpen(false);
-      setUserIdToDelete(null);
+      toast.success('Kullanıcı başarıyla silindi.');
     } catch (error) {
-      setError('Kullanıcı silinirken bir hata oluştu: ' + error.message);
+      setError('Kullanıcı silinirken bir hata oluştu.');
+      toast.error('Kullanıcı silinirken bir hata oluştu.');
+    } finally {
+      setModalOpen(false);
     }
   };
 
   const columns = [
+    { name: '#', selector: (row, index) => index + 1, sortable: false, width: '50px' },
     { name: 'Kullanıcı İsmi', selector: (row) => row.fullName, sortable: true },
     { name: 'Mail Adresi', selector: (row) => row.email, sortable: true },
-    { name: 'Departman', selector: (row) => row.departmentName, sortable: true },
     {
       name: 'İşlemler',
       cell: (row) => (
@@ -74,20 +79,21 @@ const AdminUserListPage = () => {
     },
   ];
 
+  if (error) return <div>{error}</div>;
+
   return (
     <div className="user-list-page">
       <div className="header-container">
         <h2 className='DataTable__header'>Admin Kullanıcı Listesi</h2>
-        <input
-          type="text"
-          placeholder="İsim ya da mail ile kullanıcı ara..."
-          value={searchText}
-          onChange={handleSearch}
-          className="search-bar"
-        />
       </div>
 
-      {error && <div className="error-message">{error}</div>}
+      <input
+        type="text"
+        placeholder="İsim veya e-posta ile ara"
+        value={searchText}
+        onChange={handleSearch}
+        className="search-bar"
+      />
 
       <DataTable
         columns={columns}
@@ -117,6 +123,8 @@ const AdminUserListPage = () => {
           </div>
         </div>
       )}
+
+      <ToastContainer position="top-right" autoClose={5000} hideProgressBar={false} />
     </div>
   );
 };
