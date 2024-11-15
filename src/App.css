@@ -7,7 +7,7 @@
 
 .main-content {
   flex: 1; /* İçerik alanı tüm alanı kaplar */
-  padding: 20px; /* İçerik ve kenar arasına boşluk */
+  /* padding: 20px; /* İçerik ve kenar arasına boşluk */
   margin-left: 250px; /* Sidebar genişliği kadar boşluk bırakma */
   height: 100vh; /* Yüksekliği tam sayfa boyutu yapma */
   overflow-y: auto; /* İçerik uzun olduğunda kaydırma çubuğu eklemek için */
