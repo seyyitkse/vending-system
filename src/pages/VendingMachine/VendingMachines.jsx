@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import './VendingMachines.css';
-
+import { FaPlus } from 'react-icons/fa';
+// import { IoIosArrowBack } from 'react-icons/io';
 // Set default marker icons
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -18,6 +19,7 @@ const VendingMachines = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6; // Display 6 items per page
+  const navigate = useNavigate();
 
   // Fetch vending machines data from the API
   useEffect(() => {
@@ -53,18 +55,31 @@ const VendingMachines = () => {
     }
   };
 
+  const handleRegisterClick = () => {
+    navigate('/vending-machine-registration');
+  };
+
   return (
     <div className="vending-machines-page">
       <h1>Otomatlar</h1>
 
-      {/* Search Box */}
-      <input
-        type="text"
-        placeholder="Otomatlarda Ara"
-        value={searchTerm}
-        onChange={handleSearchChange}
-        className="search-input"
-      />
+      <div className="actions-container">
+        {/* Search Box */}
+        <div className="search-container">
+          <input
+            type="text"
+            placeholder="Otomatlarda Ara"
+            value={searchTerm}
+            onChange={handleSearchChange}
+            className="search-input"
+          />
+        </div>
+
+        {/* Registration Button */}
+        <button onClick={handleRegisterClick} className="register-button">
+          <FaPlus /> Yeni Otomat Kaydı
+        </button>
+      </div>
 
       <div className="vending-machines-container">
         {currentMachines.length > 0 ? (
@@ -86,6 +101,7 @@ const VendingMachines = () => {
                   </Marker>
                 </MapContainer>
               </div>
+
               <p className="machine-location">Konum: {machine.location}</p>
               <Link to={`/vending-machine-detail/${machine.id}`} className="details-button">
                 Detayları Gör

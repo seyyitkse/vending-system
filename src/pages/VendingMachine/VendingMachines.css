@@ -44,20 +44,20 @@
 }
 
 .machine-location {
-  margin: 5px 0;
+  margin-top: 20px; /* Add margin to separate from the map */
   font-size: 12px; /* Smaller font for location */
   color: #666;
 }
 
 .details-button {
   display: inline-block;
+  margin-top: 10px; /* Add margin to separate from the map */
   padding: 8px 12px;
   background-color: #007bff;
   color: #fff;
   text-decoration: none;
   border-radius: 4px;
   font-size: 13px;
-  margin-top: 5px;
 }
 
 .pagination {
@@ -85,4 +85,21 @@
 .pagination button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+
+.register-button {
+  display: inline-block;
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  background-color: #28a745; /* Bootstrap success color */
+  color: white; /* White text */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.register-button:hover {
+  background-color: #218838; /* Darker green on hover */
 }
