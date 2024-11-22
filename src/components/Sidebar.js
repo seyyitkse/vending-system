@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { GiVendingMachine,GiSecretBook } from "react-icons/gi";
-import { FaHome, FaBox, FaChartBar, FaClipboardList, FaUser, FaCogs, FaUsers,FaUserCog   } from 'react-icons/fa';
+import { GiVendingMachine, GiSecretBook } from "react-icons/gi";
+import { FaHome, FaBox, FaChartBar, FaClipboardList, FaUser, FaCogs, FaUsers, FaUserCog } from 'react-icons/fa';
 import { PiTreeStructureDuotone } from "react-icons/pi";
 import { TbUsersGroup } from "react-icons/tb";
 import { RiCustomerService2Line } from "react-icons/ri";
@@ -12,12 +12,15 @@ import './Sidebar.css';
 
 function Sidebar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isRoleOpen, setIsRoleOpen] = useState(false);
-  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState(null);
 
   const location = useLocation();
 
   const isActive = (path) => location.pathname === path;
+
+  const toggleMenu = (menu) => {
+    setOpenMenu(openMenu === menu ? null : menu);
+  };
 
   return (
     <div className="sidebar">
@@ -36,67 +39,61 @@ function Sidebar() {
         <li className={isActive('/stock-tracking') ? 'active' : ''}>
           <Link to="/stock-tracking"><FaClipboardList /> Stok Takibi</Link>
         </li>
-        <li className={isActive('/vending-machine') ? 'active' : ''}>
-          <Link to="/vending-machine"><FaCogs /> Otomatlar</Link>
+    
+        <li onClick={() => toggleMenu('vending')} className="accordion-header">
+          <div className="accordion-toggle">
+            <FaCogs />
+            <span className={openMenu === 'vending' ? 'bold' : ''}>Otomat Yönetimi</span>
+          </div>
+          <span className={openMenu === 'vending' ? 'arrow open' : 'arrow'}>&#9660;</span>
         </li>
-        <li className={isActive('/vending-machine-registration') ? 'active' : ''}>
-          <Link to="/vending-machine-registration"><GiVendingMachine /> Otomat Kayıt</Link>
-        </li>
+        <ul className={`accordion-content ${openMenu === 'vending' ? 'open' : ''}`}>
+          <li className={isActive('/vending-machine') ? 'active' : ''}>
+            <Link to="/vending-machine"><GiVendingMachine /> Otomatlar</Link>
+          </li>
+        </ul>
+
         <li className={isActive('/log-records') ? 'active' : ''}>
           <Link to="/log-records"><GiSecretBook /> Log Kayıtları</Link>
         </li>
         <li className={isActive('/departments/list') ? 'active' : ''}>
           <Link to="/departments/list"><PiTreeStructureDuotone /> Departmanlar</Link>
         </li>
-        <li onClick={() => setIsRoleOpen(!isRoleOpen)} className="accordion-header">
+        <li onClick={() => toggleMenu('role')} className="accordion-header">
           <div className="accordion-toggle">
             <TbUsersGroup />
-            <span className={isRoleOpen ? 'bold' : ''}>Rol Yönetimi</span>
+            <span className={openMenu === 'role' ? 'bold' : ''}>Rol Yönetimi</span>
           </div>
-          <span className={isRoleOpen ? 'arrow open' : 'arrow'}>&#9660;</span>
+          <span className={openMenu === 'role' ? 'arrow open' : 'arrow'}>&#9660;</span>
         </li>
-        <ul className={`accordion-content ${isRoleOpen ? 'open' : ''}`}>
-        <li className={isActive('/roles') ? 'active' : ''}>
-        <Link to="/roles"><FaUserCog /> Roller</Link>
-        </li>
-        <li className={isActive('/user-management') ? 'active' : ''}>
-          <Link to="/user-management"><FaUsers /> Kullanıcı Rolleri</Link>
-        </li>
+        <ul className={`accordion-content ${openMenu === 'role' ? 'open' : ''}`}>
+          <li className={isActive('/roles') ? 'active' : ''}>
+            <Link to="/roles"><FaUserCog /> Roller</Link>
+          </li>
+          <li className={isActive('/role-management') ? 'active' : ''}>
+            <Link to="/role-management"><FaUsers /> Kullanıcı Rolleri</Link>
+          </li>
         </ul>
 
-        <li onClick={() => setIsUserMenuOpen(!isUserMenuOpen)} className="accordion-header">
+        <li onClick={() => toggleMenu('user')} className="accordion-header">
           <div className="accordion-toggle">
             <FaUserGear />
-            <span className={isUserMenuOpen ? 'bold' : ''}>Kullanıcı Yönetimi</span>
+            <span className={openMenu === 'user' ? 'bold' : ''}>Kullanıcı Yönetimi</span>
           </div>
-          <span className={isUserMenuOpen ? 'arrow open' : 'arrow'}>&#9660;</span>
+          <span className={openMenu === 'user' ? 'arrow open' : 'arrow'}>&#9660;</span>
         </li>
-        <ul className={`accordion-content ${isUserMenuOpen ? 'open' : ''}`}>
-        <li className={isActive('/customer-management') ? 'active' : ''}>
-        <Link to="/customer-management"><FiUsers /> Müşteriler</Link>
-        </li>
-        <li className={isActive('/user-management') ? 'active' : ''}>
-          <Link to="/user-management"><RiCustomerService2Line /> Adminler</Link>
-        </li>
+        <ul className={`accordion-content ${openMenu === 'user' ? 'open' : ''}`}>
+          <li className={isActive('/customer-management') ? 'active' : ''}>
+            <Link to="/customer-management"><FiUsers /> Müşteriler</Link>
+          </li>
+          <li className={isActive('/admin-management') ? 'active' : ''}>
+            <Link to="/admin-management"><RiCustomerService2Line /> Adminler</Link>
+          </li>
         </ul>
+
         
-        <li onClick={() => setIsUserMenuOpen(!isUserMenuOpen)} className="accordion-header">
-          <div className="accordion-toggle">
-            <FaUserGear />
-            <span className={isUserMenuOpen ? 'bold' : ''}>Kullanıcı Yönetimi</span>
-          </div>
-          <span className={isUserMenuOpen ? 'arrow open' : 'arrow'}>&#9660;</span>
-        </li>
-        <ul className={`accordion-content ${isUserMenuOpen ? 'open' : ''}`}>
-        <li className={isActive('/customer-management') ? 'active' : ''}>
-        <Link to="/customer-management"><FiUsers /> Müşteriler</Link>
-        </li>
-        <li className={isActive('/user-management') ? 'active' : ''}>
-          <Link to="/user-management"><RiCustomerService2Line /> Adminler</Link>
-        </li>
-        </ul>
+   
       </ul>
-
 
       <div 
         className="user-info"
