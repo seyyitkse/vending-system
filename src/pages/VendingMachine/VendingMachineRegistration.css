@@ -16,22 +16,23 @@
   width: 100%;
   max-width: 700px; /* Maximum width increased */
 }
+
 form {
   display: block; /* Ensures the form layout is block, not flex */
 }
+
 h1 {
   font-size: 28px;
   color: #343a40; /* Dark text color */
   margin-bottom: 20px; /* Spacing below title */
 }
 
-.form-group1 {
+.form-group {
   margin-bottom: 15px; /* Space between fields */
   display: block; /* Ensures block layout */
-
 }
 
-label1 {
+label {
   margin-bottom: 5px;
   font-weight: bold; /* Bold labels */
 }
@@ -59,7 +60,7 @@ input[type='text'] {
   font-size: 16px;
 }
 
-.submit-button1 {
+.submit-button {
   background-color: #28a745; /* Bootstrap success color */
   color: white; /* White text */
   border: none;
@@ -73,6 +74,7 @@ input[type='text'] {
 .submit-button:hover {
   background-color: #218838; /* Darker green on hover */
 }
+
 .clear-button {
   background-color: #dc3545; /* Bootstrap danger color */
   color: white; /* White text */
