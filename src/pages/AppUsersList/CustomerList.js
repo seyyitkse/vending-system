@@ -52,6 +52,12 @@ const CustomerListPage = () => {
   };
 
   const columns = [
+    {
+      name: '#',
+      selector: (row, index) => index + 1, // Add index + 1 for numbering
+      sortable: false,
+      width: '50px', // Optional: Adjust width if needed
+  },
     { name: 'Name', selector: (row) => row.displayName, sortable: true },
     { name: 'Email', selector: (row) => row.email, sortable: true },
     { name: 'Phone', selector: (row) => row.phone, sortable: true },
