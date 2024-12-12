@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, useMapEvents } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom';
 import './VendingMachineRegistration.css';
 
 // Set up the default icon for Leaflet
@@ -14,8 +17,59 @@ L.Icon.Default.mergeOptions({
 
 const VendingMachineRegistration = () => {
   const [machineName, setMachineName] = useState('');
-  const [position] = useState([39.919983401735344, 32.85384178161622]); // Default coordinates, no setter
+  const [locationDescription, setLocationDescription] = useState('');
   const [selectedPosition, setSelectedPosition] = useState(null);
+  const position = [39.919983401735344, 32.85384178161622]; // Default position set to Ankara
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!selectedPosition) {
+      toast.error('Lütfen haritadan bir konum seçiniz.');
+      return;
+    }
+
+    if (!machineName || !locationDescription) {
+      toast.error('Lütfen tüm alanları doldurunuz.');
+      return;
+    }
+
+    const vend = {
+      id: 0,
+      name: machineName,
+      latitude: selectedPosition[0],
+      longitude: selectedPosition[1],
+      locationDescription: locationDescription,
+    };
+
+    try {
+      const response = await fetch('https://localhost:44395/api/Vend', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(vend),
+      });
+
+      if (!response.ok) {
+        throw new Error('Otomat kaydedilemedi');
+      }
+
+      toast.success('Otomat başarıyla kaydedildi');
+      // Redirect to the vending machine list page after a short delay
+      setTimeout(() => {
+        navigate('/vending-machine');
+      }, 2000);
+    } catch (error) {
+      console.error('Error:', error);
+      toast.error('Otomat kaydedilemedi');
+    }
+  };
+
+  const clearCoordinates = () => {
+    setSelectedPosition(null);
+  };
 
   const MapClickHandler = () => {
     useMapEvents({
@@ -26,19 +80,9 @@ const VendingMachineRegistration = () => {
     return null;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('Vending Machine Name:', machineName);
-    console.log('Coordinates:', selectedPosition);
-  };
-
-  // Koordinatları temizleme fonksiyonu
-  const clearCoordinates = () => {
-    setSelectedPosition(null);
-  };
-
   return (
     <div className="new-vending-machine-page">
+      <ToastContainer />
       <h1>Yeni Otomat Kayıt Sayfası</h1>
       <div className="registration-card1">
         <form onSubmit={handleSubmit} style={{ display: 'block' }}>
@@ -49,6 +93,16 @@ const VendingMachineRegistration = () => {
               id="machineName"
               value={machineName}
               onChange={(e) => setMachineName(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="locationDescription">Konum Açıklaması:</label>
+            <input
+              type="text"
+              id="locationDescription"
+              value={locationDescription}
+              onChange={(e) => setLocationDescription(e.target.value)}
               required
             />
           </div>
