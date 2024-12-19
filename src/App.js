@@ -60,7 +60,6 @@ function App() {
             <Route path="/register-customer" element={<CustomerRegistration />} />
             <Route path="/register-admin" element={<AdminRegistration />} />
             <Route path="/user/update/:id" element={<EditUser />} />
-
             </Routes>
         </div>
       </div>
