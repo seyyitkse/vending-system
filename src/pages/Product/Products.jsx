@@ -31,7 +31,7 @@ const Products = () => {
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
-    setCurrentPage(1); // Reset to first page on new search
+    setCurrentPage(1);
   };
 
   const handlePageChange = (newPage) => {
@@ -66,7 +66,6 @@ const Products = () => {
           </div>
         ))}
       </div>
-
       <div className="pagination">
         <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
           Previous
