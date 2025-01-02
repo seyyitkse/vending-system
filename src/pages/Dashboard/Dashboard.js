@@ -204,6 +204,7 @@ const Dashboard = () => {
           <p>Çikolata</p>
         </div>
         <div className="card notes-card">
+
   <h2>Yapılacaklar</h2>
   <input
     type="text"
@@ -265,5 +266,4 @@ const Dashboard = () => {
     </div>
   );
 };
-
 export default Dashboard;
