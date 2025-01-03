@@ -240,6 +240,7 @@ const Dashboard = () => {
        </div>
 
 <div className="card history-card">
+  
           <h2>Son Aktiviteler</h2>
           <FontAwesomeIcon icon={faBell} size='3x' />          
           <ul>
