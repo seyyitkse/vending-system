@@ -143,5 +143,4 @@ const EditUser = () => {
     </div>
   );
 };
-
 export default EditUser;
