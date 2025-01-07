@@ -128,5 +128,4 @@ const CustomerUserListPage = () => {
     </div>
   );
 };
-
 export default CustomerUserListPage;
