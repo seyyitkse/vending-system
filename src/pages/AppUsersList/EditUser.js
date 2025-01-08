@@ -96,7 +96,6 @@ const EditUser = () => {
       }
     }
   };
-
   return (
     <div className="edit-user-container">
       <h2>Kullanıcı Bilgilerini Düzenle</h2>
