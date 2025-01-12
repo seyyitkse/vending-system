@@ -136,5 +136,4 @@ const DepartmentList = () => {
     </div>
   );
 };
-
 export default DepartmentList;
