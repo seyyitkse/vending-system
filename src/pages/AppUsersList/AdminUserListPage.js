@@ -80,7 +80,6 @@ const AdminUserListPage = () => {
   ];
 
   if (error) return <div>{error}</div>;
-
   return (
     <div className="user-list-page">
       <div className="header-container">
