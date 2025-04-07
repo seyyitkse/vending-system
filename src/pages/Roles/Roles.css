@@ -2,7 +2,7 @@
 
 /* Container for the role management */
 .staff-management-container {
-    max-width: 1200px;
+    max-width: 1700px;
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
@@ -64,8 +64,8 @@
     transition: background-color 0.3s ease;
   }
   
-  .btn-edit {
-    background-color: #4caf50;
+  .btn-edit-rolelist {
+    background-color: #c7a50f;
     color: #fff;
   }
   
@@ -74,7 +74,7 @@
     color: #fff;
   }
   
-  .btn-edit:hover {
+  .btn-edit-rolelist:hover {
     background-color: #45a049;
   }
   
@@ -127,4 +127,3 @@
     background-color: #f44336;
     color: #fff;
   }
-  

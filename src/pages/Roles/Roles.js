@@ -51,7 +51,7 @@ const RoleList = () => {
       name: 'İşlemler',
       cell: (row) => (
         <div className="button-group">
-          <Link to={`/roles/update/${row.id}`} className="btn btn-edit">
+          <Link to={`/roles/update/${row.id}`} className="btn btn-edit-rolelist">
             <i className="fas fa-edit"></i> Düzenle
           </Link>
         </div>
