@@ -7,6 +7,8 @@ import { TbUsersGroup } from "react-icons/tb";
 import { RiCustomerService2Line } from "react-icons/ri";
 import { FiUsers } from "react-icons/fi";
 import { FaUserGear } from "react-icons/fa6";
+import { SlBasketLoaded } from "react-icons/sl";
+import { TfiAlignJustify } from "react-icons/tfi";
 
 import './Sidebar.css';
 
@@ -24,22 +26,48 @@ function Sidebar() {
 
   return (
     <div className="sidebar">
-      <h2 className="sidebar-title">Otomat Takip</h2>
-      <ul>
+<h2 className="sidebar-h2 sidebar-title">Otomat Takip</h2>
+<ul>
         {/* Menu items */}
-        <li className={isActive('/') ? 'active' : ''}>
-          <Link to="/"><FaHome /> Ana Sayfa</Link>
+        <li className={isActive('/dashboard') ? 'active' : ''}>
+          <Link to="/dashboard"><FaHome /> Ana Sayfa</Link>
         </li>
-        <li className={isActive('/products') ? 'active' : ''}>
-          <Link to="/products"><FaBox /> Ürünler</Link>
-        </li>
+
         <li className={isActive('/statistics') ? 'active' : ''}>
           <Link to="/statistics"><FaChartBar /> İstatistikler</Link>
         </li>
-        <li className={isActive('/stock-tracking') ? 'active' : ''}>
-          <Link to="/stock-tracking"><FaClipboardList /> Stok Takibi</Link>
-        </li>
+
     
+        <li onClick={() => toggleMenu('product')} className="accordion-header">
+          <div className="accordion-toggle">
+          <SlBasketLoaded />
+          <span className={openMenu === 'product' ? 'bold' : ''}>Ürün Yönetimi</span>
+          </div>
+          <span className={openMenu === 'product' ? 'arrow open' : 'arrow'}>&#9660;</span>
+        </li>
+        
+        <ul className={`accordion-content ${openMenu === 'product' ? 'open' : ''}`}>
+        <li className={isActive('/products') ? 'active' : ''}>
+          <Link to="/products"><FaBox /> Ürünler</Link>
+        </li>
+
+        <li className={isActive('/categories') ? 'active' : ''}>
+          <Link to="/categories"><TfiAlignJustify />
+          Kategoriler</Link>
+        </li>
+
+        <li className={isActive('/stock-tracking') ? 'active' : ''}>
+          <Link to="/stock-tracking"><FaClipboardList />
+          Stok Takibi</Link>
+        </li>
+
+        <li className={isActive('/orders') ? 'active' : ''}>
+          <Link to="/orders"><FaClipboardList />
+          Sipariş Takibi</Link>
+        </li>
+        </ul>
+
+
         <li onClick={() => toggleMenu('vending')} className="accordion-header">
           <div className="accordion-toggle">
             <FaCogs />
@@ -53,12 +81,10 @@ function Sidebar() {
           </li>
         </ul>
 
-        <li className={isActive('/log-records') ? 'active' : ''}>
-          <Link to="/log-records"><GiSecretBook /> Log Kayıtları</Link>
-        </li>
         <li className={isActive('/departments/list') ? 'active' : ''}>
           <Link to="/departments/list"><PiTreeStructureDuotone /> Departmanlar</Link>
         </li>
+
         <li onClick={() => toggleMenu('role')} className="accordion-header">
           <div className="accordion-toggle">
             <TbUsersGroup />
@@ -66,13 +92,17 @@ function Sidebar() {
           </div>
           <span className={openMenu === 'role' ? 'arrow open' : 'arrow'}>&#9660;</span>
         </li>
+
         <ul className={`accordion-content ${openMenu === 'role' ? 'open' : ''}`}>
+
           <li className={isActive('/roles') ? 'active' : ''}>
             <Link to="/roles"><FaUserCog /> Roller</Link>
           </li>
+
           <li className={isActive('/role-management') ? 'active' : ''}>
             <Link to="/role-management"><FaUsers /> Kullanıcı Rolleri</Link>
           </li>
+          
         </ul>
 
         <li onClick={() => toggleMenu('user')} className="accordion-header">
@@ -91,7 +121,20 @@ function Sidebar() {
           </li>
         </ul>
 
-        
+
+        <li onClick={() => toggleMenu('system')} className="accordion-header">
+          <div className="accordion-toggle">
+          <SlBasketLoaded />
+          <span className={openMenu === 'system' ? 'bold' : ''}>Sistem Yönetimi</span>
+          </div>
+          <span className={openMenu === 'system' ? 'arrow open' : 'arrow'}>&#9660;</span>
+        </li>
+              
+        <ul className={`accordion-content ${openMenu === 'system' ? 'open' : ''}`}>
+        <li className={isActive('/log-records') ? 'active' : ''}>
+          <Link to="/log-records"><GiSecretBook /> Log Kayıtları</Link>
+        </li>
+        </ul>
    
       </ul>
 
