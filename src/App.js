@@ -33,7 +33,6 @@ import ProductList from './pages/ProductList/ProductListPage';
 import CategoryRegister from './pages/Categories/CategoryAddPage';
 import OrderListPage from './pages/Order/OrdersPage';
 import OrderDetailPage from './pages/Order/OrderDetailPage';
-import ProtectedRoute from './pages/ProtectedRoute';
 import Unauthorized from './pages/Unauthorized';
 import CustomerDashboard from './pages/Customer/CustomerDashboard';
 
@@ -57,257 +56,39 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute requiredRole="Admin">
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/products"
-            element={
-              <ProtectedRoute>
-                <Products />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/product-registration"
-            element={
-              <ProtectedRoute>
-                <ProductRegistration />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/statistics"
-            element={
-              <ProtectedRoute>
-                <Statistics />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/stock-tracking"
-            element={
-              <ProtectedRoute>
-                <StockTracking />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/vending-machine"
-            element={
-              <ProtectedRoute>
-                <VendingMachines />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/vending-machine-registration"
-            element={
-              <ProtectedRoute>
-                <VendingMachineRegistration />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/vending-machine-detail/:id"
-            element={
-              <ProtectedRoute>
-                <VendingMachineDetail />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/staff-management"
-            element={
-              <ProtectedRoute>
-                <StaffManagement />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/log-records"
-            element={
-              <ProtectedRoute>
-                <LogRecords />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/edit-staff/:id"
-            element={
-              <ProtectedRoute>
-                <EditStaff />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/add-staff"
-            element={
-              <ProtectedRoute>
-                <AddStaff />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/product-registration" element={<ProductRegistration />} />
+          <Route path="/statistics" element={<Statistics />} />
+          <Route path="/stock-tracking" element={<StockTracking />} />
+          <Route path="/vending-machine" element={<VendingMachines />} />
+          <Route path="/vending-machine-registration" element={<VendingMachineRegistration />} />
+          <Route path="/vending-machine-detail/:id" element={<VendingMachineDetail />} />
+          <Route path="/staff-management" element={<StaffManagement />} />
+          <Route path="/log-records" element={<LogRecords />} />
+          <Route path="/edit-staff/:id" element={<EditStaff />} />
+          <Route path="/add-staff" element={<AddStaff />} />
           <Route path="/login" element={<LoginGoogle />} />
-          <Route
-            path="/departments/register"
-            element={
-              <ProtectedRoute>
-                <DepartmentRegister />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/departments/list"
-            element={
-              <ProtectedRoute>
-                <DepartmentList />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/departments/update/:id"
-            element={
-              <ProtectedRoute>
-                <DepartmentUpdate />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/roles"
-            element={
-              <ProtectedRoute>
-                <Roles />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/roles-registration"
-            element={
-              <ProtectedRoute>
-                <RoleRegistration />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/roles/update/:id"
-            element={
-              <ProtectedRoute>
-                <RoleUpdate />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/role-management"
-            element={
-              <ProtectedRoute>
-                <UserManagement />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/customer-management"
-            element={
-              <ProtectedRoute>
-                <CustomerListPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/admin-management"
-            element={
-              <ProtectedRoute>
-                <AdminUserListPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/register-customer"
-            element={
-              <ProtectedRoute>
-                <CustomerRegistration />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/register-admin"
-            element={
-              <ProtectedRoute>
-                <AdminRegistration />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/user/update/:id"
-            element={
-              <ProtectedRoute>
-                <EditUser />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/categories"
-            element={
-              <ProtectedRoute>
-                <ListCategory />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/category/:categoryId/products"
-            element={
-              <ProtectedRoute>
-                <ProductList />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/category/register"
-            element={
-              <ProtectedRoute>
-                <CategoryRegister />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/orders"
-            element={
-              <ProtectedRoute>
-                <OrderListPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/orders/:id"
-            element={
-              <ProtectedRoute>
-                <OrderDetailPage />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/unauthorized"
-            element={
-              <ProtectedRoute>
-                <Unauthorized />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/customer-dashboard"
-            element={
-              <ProtectedRoute>
-                <CustomerDashboard />
-              </ProtectedRoute>
-            }
-          />
+          <Route path="/departments/register" element={<DepartmentRegister />} />
+          <Route path="/departments/list" element={<DepartmentList />} />
+          <Route path="/departments/update/:id" element={<DepartmentUpdate />} />
+          <Route path="/roles" element={<Roles />} />
+          <Route path="/roles-registration" element={<RoleRegistration />} />
+          <Route path="/roles/update/:id" element={<RoleUpdate />} />
+          <Route path="/role-management" element={<UserManagement />} />
+          <Route path="/customer-management" element={<CustomerListPage />} />
+          <Route path="/admin-management" element={<AdminUserListPage />} />
+          <Route path="/register-customer" element={<CustomerRegistration />} />
+          <Route path="/register-admin" element={<AdminRegistration />} />
+          <Route path="/user/update/:id" element={<EditUser />} />
+          <Route path="/categories" element={<ListCategory />} />
+          <Route path="/category/:categoryId/products" element={<ProductList />} />
+          <Route path="/category/register" element={<CategoryRegister />} />
+          <Route path="/orders" element={<OrderListPage />} />
+          <Route path="/orders/:id" element={<OrderDetailPage />} />
+          <Route path="/unauthorized" element={<Unauthorized />} />
+          <Route path="/customer-dashboard" element={<CustomerDashboard />} />
         </Routes>
-        
       </Layout>
     </Router>
   );
